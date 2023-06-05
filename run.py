@@ -1,4 +1,4 @@
-from calculadora.python.procesos_matematicos.procesos import sumar
+# Librerías propias.
 from  calculadora.python.front_calculadora.front_calculadora import *
 
 if __name__ == '__main__':
