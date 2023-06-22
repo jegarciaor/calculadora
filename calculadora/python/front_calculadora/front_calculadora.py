@@ -2,6 +2,9 @@
 import customtkinter
 import math
 
+# Librerías propias.
+from calculadora.python.metadata.path import PathImages
+
 # Apariencia de la ventana principal.
 customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("blue")
