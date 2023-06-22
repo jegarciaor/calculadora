@@ -19,6 +19,7 @@ class VentanaCalculadora(customtkinter.CTk):
         self.title(self.calculadora_titulo)
         self.font_entrada = ('Arial', 32, 'bold')
         self.font_botones = ('Arial', 24)
+        self.iconbitmap(PathImages.icono)
 
         self.ecuacion = ''
         self.resultado = ''
