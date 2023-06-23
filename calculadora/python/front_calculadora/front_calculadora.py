@@ -14,9 +14,12 @@ class VentanaCalculadora(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
+        # Organizo la ventana principal.
         self.geometry('282x434')
         self.calculadora_titulo = 'Calculadora'
         self.title(self.calculadora_titulo)
+
+        # Creo configuración para la entrada y los botones.
         self.font_entrada = ('Arial', 32, 'bold')
         self.font_botones = ('Arial', 24)
         self.iconbitmap(PathImages.icono)
