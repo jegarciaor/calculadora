@@ -28,6 +28,7 @@ class VentanaCalculadora(customtkinter.CTk):
 
         self.home_frame = customtkinter.CTkFrame(self, width=282, height=435)
         self.home_frame.pack()
+        self.texto_variable = customtkinter.StringVar()
 
         # Creo la ventana de entrada de texto.
         self.entrada_texto = customtkinter.CTkEntry(
