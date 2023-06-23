@@ -24,9 +24,7 @@ class VentanaCalculadora(customtkinter.CTk):
         self.font_botones = ('Arial', 24)
         self.iconbitmap(PathImages.icono)
 
-        self.ecuacion = ''
         self.resultado = ''
-        self.i = 0
 
         self.home_frame = customtkinter.CTkFrame(self, width=282, height=435)
         self.home_frame.pack()
