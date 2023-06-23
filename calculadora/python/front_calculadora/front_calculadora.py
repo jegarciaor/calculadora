@@ -158,45 +158,51 @@ class VentanaCalculadora(customtkinter.CTk):
             command=self.calcular, width=70, height=60)
         boton_igualdad.place(x=210, y=371)
 
-    def agregar_calculo(self, simbolo: int | str) -> None:
+    def ingresar_valores(self, simbolo: int | str) -> None:
+        caracteres = ['.', '+', '-', '*', '/']
+
+        if simbolo in list(range(10)) + caracteres:
+            self.texto_variable.set(self.texto_variable.get() + str(simbolo))
+
         if simbolo == '%':
-            simbolo = '/100'
-        self.ecuacion += str(simbolo)
-        self.entrada_texto.insert(self.i, simbolo)
-        self.i += 1
-
-    def limpiar_campo(self):
-        self.entrada_texto.delete(0, 'end')
-        self.ecuacion = ''
-
-    def limpiar_campo_parcial(self):
-        self.ecuacion = self.ecuacion[:-1]
-        print(self.ecuacion)
-        self.entrada_texto.delete(0, 'end')
-        self.entrada_texto.insert(0, self.ecuacion)
-
-    def convertir_inverso(self) -> None:
-        self.ecuacion = str(1 / float(self.ecuacion))
-        self.entrada_texto.delete(0, 'end')
-        self.entrada_texto.insert(0, self.ecuacion)
+            simbolo.replace('%', '/100')
+            self.texto_variable.set(
+                self.texto_variable.get() + str(simbolo.replace('%', '/100')))
 
     def calcular(self):
-        self.resultado = str(eval(self.ecuacion))
-        self.limpiar_campo()
+        self.resultado = str(eval(self.texto_variable.get()))
+        self.borrar_campo()
         self.entrada_texto.insert(0, self.resultado)
+        self.texto_variable.set(self.resultado)
 
-    def elevar_cuadrado(self) -> None:
-        self.ecuacion = str(float(self.ecuacion) ** 2)
-        self.entrada_texto.delete(0, 'end')
-        self.entrada_texto.insert(0, self.ecuacion)
+    def obtener_porcentaje(self) -> None:
+        self.resultado = str(float(self.texto_variable.get()) / 100)
+        self.entrada_texto.insert(0, self.resultado)
+        self.texto_variable.set(self.resultado)
 
-    def raiz_cuadrada(self) -> None:
-        self.ecuacion = str(math.sqrt(float(self.ecuacion)))
-        self.entrada_texto.delete(0, 'end')
-        self.entrada_texto.insert(0, self.ecuacion)
+    def borrar_campo(self):
+        self.entrada_texto.delete(0, customtkinter.END)
 
-    def cambiar_signo(self) -> None:
-        self.ecuacion = str(-1 * float(self.ecuacion))
+    def borrar_campo_parcial(self):
+        self.resultado = self.texto_variable.get()[:-1]
+        print(self.resultado)
+        self.texto_variable.set(self.resultado)
+
+    def obtener_inverso(self) -> None:
+        self.resultado = str(1 / float(self.texto_variable.get()))
+        self.texto_variable.set(self.resultado)
+
+    def obtener_cuadrado(self) -> None:
+        self.resultado = str(float(self.texto_variable.get()) ** 2)
         self.entrada_texto.delete(0, 'end')
-        self.entrada_texto.insert(self.i, self.ecuacion)
-        self.i += 1
+        self.texto_variable.set(self.resultado)
+
+    def obtener_raiz_cuadrada(self) -> None:
+        self.resultado = str(math.sqrt(float(self.texto_variable.get())))
+        self.entrada_texto.insert(0, self.resultado)
+        self.texto_variable.set(self.resultado)
+
+    def obtener_nuevo_signo(self) -> None:
+        self.resultado = str(-1 * float(self.texto_variable.get()))
+        self.entrada_texto.insert(0, self.resultado)
+        self.texto_variable.set(self.resultado)
