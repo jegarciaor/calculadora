@@ -32,7 +32,8 @@ class VentanaCalculadora(customtkinter.CTk):
 
         # Creo la ventana de entrada de texto.
         self.entrada_texto = customtkinter.CTkEntry(
-            self.home_frame, width=280, height=60, font=self.font_entrada)
+            self.home_frame, width=280, height=60, font=self.font_entrada,
+            justify=customtkinter.RIGHT, textvariable=self.texto_variable)
         self.entrada_texto.place(x=0, y=0)
 
         self.boton_porcent = customtkinter.CTkButton(
