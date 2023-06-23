@@ -7,4 +7,3 @@ class PathImages:
 
     img = Path.cwd() / 'img'
     icono = img / 'calculator_icon.ico'
-    logo = img / 'logo_gob.png'
